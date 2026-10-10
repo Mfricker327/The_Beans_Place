@@ -165,7 +165,7 @@ export default function NavBar({ toggleCart, theme, onToggleTheme }) {
             {/* Mobile Nav */}
             <AnimatePresence>
                 {menuOpen && (
-                    <Motion.div
+                    <motion.div
                     className="overflow-hidden md:hidden"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
@@ -212,7 +212,7 @@ export default function NavBar({ toggleCart, theme, onToggleTheme }) {
                             </Button>
 
                         </nav>
-                    </Motion.div>
+                    </motion.div>
                 )}
             </AnimatePresence>
         </motion.header>

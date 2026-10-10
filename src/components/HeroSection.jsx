@@ -181,7 +181,7 @@ export default function HeroSection() {
             <motion.div
             className="hero-trust"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0}}
+            animate={{ opacity: 1}}
             transition={{ duration: 0.6, delay: 1.1 }}
             >
             <span>★★★★★ 4.9/5 from 2,400+ customers</span>

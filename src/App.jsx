@@ -30,16 +30,14 @@
 
 import { useState } from "react";
 
-
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
-import CtaSection from "./components/CtaSection";
 import FeaturesSection from "./components/FeaturesSection";
 import ProductShowcase from "./components/ProductShowcase";
+import CtaSection from "./components/CtaSection";
 import FooterSection from "./components/FooterSection";
 import AboutSection from "./components/AboutSection";
-import ContactSection from "./components/ContactSection";
-import HeroSection from "./components/HeroSection";
+import RibbonTicker from "./components/RibbonTicker";
 
 export default function App() {
   const [theme, setTheme] = useState("light");
@@ -57,36 +55,36 @@ export default function App() {
           setTheme((current) => (current === "light" ? "dark" : "light"))
         }
       />
-
+      {/* Hero Section */}
       <section className="hero bg-hero">
         <div className="hero-grid">
           <HeroSection />
         </div>
       </section>
 
-
+      {/* Features Section */}
       <section className="features bg-features" id="shop">
         <FeaturesSection />
       </section>
-
+      {/* Product Showcase Section */}
       <section className="bg-cta">
         <ProductShowcase />
       </section>
-
+      {/* Ribbon Ticker Section */}
       <RibbonTicker />
-
+      {/* CTA Section */}
       <section className="bg-cta">
         <CtaSection />
       </section>
-
+      {/* About Section */}
       <section className="bg-cta" id="about">
         <AboutSection />
       </section>
-
+      {/* Contact Section */}
       <section className="bg-cta" id="contact">
         <ContactSection />
       </section>
-
+      {/* Footer Section */}
       <section className="bg-footer">
         <FooterSection />
       </section>
