@@ -33,11 +33,8 @@ import { useState } from "react";
 import NavBar from "./components/NavBar";
 import HeroSection from "./components/HeroSection";
 import FeaturesSection from "./components/FeaturesSection";
-import ProductShowcase from "./components/ProductShowcase";
-import CtaSection from "./components/CtaSection";
-import FooterSection from "./components/FooterSection";
-import AboutSection from "./components/AboutSection";
 import RibbonTicker from "./components/RibbonTicker";
+import ProductShowcase  from "./components/ProductShowcase";
 
 export default function App() {
   const [theme, setTheme] = useState("light");
@@ -66,28 +63,32 @@ export default function App() {
       <section className="features bg-features" id="shop">
         <FeaturesSection />
       </section>
-      {/* Product Showcase Section */}
-      <section className="bg-cta">
-        <ProductShowcase />
-      </section>
+
+      {/* Product Showcase */}
+      <seciton className="bg-cta">
+        <ProductShowcase products={productCatalog} addToCart={addToCart} />
+      </seciton>
+
       {/* Ribbon Ticker Section */}
       <RibbonTicker />
-      {/* CTA Section */}
-      <section className="bg-cta">
-        <CtaSection />
-      </section>
-      {/* About Section */}
+
       <section className="bg-cta" id="about">
-        <AboutSection />
+        <div className="container" style={{ padding: "4rem 1.5rem" }}>
+          <h2 style={{ margin: 0, fontSize: "2.5rem" }}>Fresh coffee, roasted with purpose.</h2>
+          <p style={{ maxWidth: "48rem", margin: "1rem auto 0" }}>
+            We source premium beans from trusted growers and roast in small batches to deliver
+            vibrant flavor and a café-quality cup at home.
+          </p>
+        </div>
       </section>
-      {/* Contact Section */}
-      <section className="bg-cta" id="contact">
-        <ContactSection />
+
+      <section className="bg-footer" id="contact">
+        <div className="container" style={{ padding: "4rem 1.5rem", textAlign: "center" }}>
+          <h3 style={{ margin: 0 }}>Contact the roastery</h3>
+          <p style={{ margin: "0.75rem 0 0" }}>hello@beansplace.com · (303) 555-0147</p>
+        </div>
       </section>
-      {/* Footer Section */}
-      <section className="bg-footer">
-        <FooterSection />
-      </section>
+      
     </div>
   );
 }

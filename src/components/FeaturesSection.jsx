@@ -105,92 +105,144 @@ import imgArabianMocha from "../assets/Arabian-Mocha-Bag.png";
 /* --- YOUR COMPONENT CODE GOES HERE --- */
 const row1 = [
   imgJamaicanBlueMountain,
-imgEthiopianHarrar,
-imgGuatemalaAntigua,
-imgTanzaniaPeaberry,
-imgColombianSupremo,
-imgVietnameserobusta,
-imgKona,
-imgArabianMocha,
-imgKenyaAA,
-imgUrigacheffe,
-imgSumatraMandheling,
-imgPanamaGeisha,
-imgRedSulawesi,
-imgCostaRicaTarrazu,
-imgBrazilianSantos,
+  imgEthiopianHarrar,
+  imgGuatemalaAntigua,
+  imgTanzaniaPeaberry,
+  imgColombianSupremo,
+  imgVietnameserobusta,
+  imgKona,
+  imgArabianMocha,
+  imgKenyaAA,
+  imgUrigacheffe,
+  imgSumatraMandheling,
+  imgPanamaGeisha,
+  imgRedSulawesi,
+  imgCostaRicaTarrazu,
+  imgBrazilianSantos,
 ];
-const row2 = [imgKenyaAA,
+const row2 = [
+  imgKenyaAA,
 
-    imgSumatraMandheling,
+  imgSumatraMandheling,
 
-    imgVietnameserobusta,
+  imgVietnameserobusta,
 
-    imgArabianMocha,
+  imgArabianMocha,
 
-    imgPanamaGeisha,
+  imgPanamaGeisha,
 
-    imgGuatemalaAntigua,
+  imgGuatemalaAntigua,
 
-    imgJamaicanBlueMountain,
+  imgJamaicanBlueMountain,
 
-    imgColombianSupremo,
+  imgColombianSupremo,
 
-    imgUrigacheffe,
+  imgUrigacheffe,
 
-    imgTanzaniaPeaberry,
+  imgTanzaniaPeaberry,
 
-    imgEthiopianHarrar,
+  imgEthiopianHarrar,
 
-    imgKona,
+  imgKona,
 
-    imgRedSulawesi,
+  imgRedSulawesi,
 
-    imgBrazilianSantos,
+  imgBrazilianSantos,
 
-    imgCostaRicaTarrazu];
-const row3 = [imgGuatemalaAntigua,
+  imgCostaRicaTarrazu,
+];
+const row3 = [
+  imgGuatemalaAntigua,
 
-    imgJamaicanBlueMountain,
+  imgJamaicanBlueMountain,
 
-    imgEthiopianHarrar,
+  imgEthiopianHarrar,
 
-    imgKona,
+  imgKona,
 
-    imgUrigacheffe,
+  imgUrigacheffe,
 
-    imgTanzaniaPeaberry,
+  imgTanzaniaPeaberry,
 
-    imgKenyaAA,
+  imgKenyaAA,
 
-    imgColombianSupremo,
+  imgColombianSupremo,
 
-    imgVietnameserobusta,
+  imgVietnameserobusta,
 
-    imgSumatraMandheling,
+  imgSumatraMandheling,
 
-    imgPanamaGeisha,
+  imgPanamaGeisha,
 
-    imgArabianMocha,
+  imgArabianMocha,
 
-    imgRedSulawesi,
+  imgRedSulawesi,
 
-    imgCostaRicaTarrazu,
+  imgCostaRicaTarrazu,
 
-    imgBrazilianSantos];
-    function ImageRow({ images, offset = 0 }) {
-        //we are going to doube the images so the row is wide enough to never show gaps
-        const doubled = [...images, ...images];
-        return (
-            <div className="carousel-row" style={{ transform: `translate3d(${offset}px, 0, 0)` }}>
-                {doubled.map((src, index) => (
-                    <div className="carousel-card" key={`${index}`}>
-                        <img src={src} 
-                        alt={`coffee bag #${index % images.length + 1}`}
-                        className="carousel-image" 
-                        loading="lazy" />
-                    </div>
-                ))}
-            </div>
-        );
-    }
+  imgBrazilianSantos,
+];
+function ImageRow({ images, offset = 0 }) {
+  //we are going to doube the images so the row is wide enough to never show gaps
+  const doubled = [...images, ...images];
+  return (
+    <div
+      className="carousel-row"
+      style={{ transform: `translate3d(${offset}px, 0, 0)` }}
+    >
+      {doubled.map((src, index) => (
+        <div className="carousel-card" key={`${index}`}>
+          <img
+            src={src}
+            alt={`coffee bag #${(index % images.length) + 1}`}
+            className="carousel-image"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+export default function FeaturesSection() {
+  const sectionRef = useRef(null);
+  const [offsets, setOffsets] = useState([0, 0, 0]);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const handleScroll = () => {
+      const rect = sectionRef.current.getBoundingClientRect();
+      const viewH = window.innerHeight;
+
+      //Progress 0 when seciton enters bottom, and 1 when it leavesthe top
+      const progress = 1 - rect.bottom / (viewH + rect.height);
+      const p = Math.max(0, Math.min(1, progress));
+
+      //Each row, over at differenct sppeeds/ directions based on scroll progress
+      // Scale range to viewport width for different screen sizes
+      const range = Math.min(window.innerWidth * 0.5, 600);
+      setOffsets([
+        -p * range,
+        //Row 1 slides left
+        p * range - range,
+        //Row 2 slides right (starts offset left)
+        -p * range * 0.7,
+        //Row 3 slides left slower
+      ]);
+    };
+    handleScroll(); //Initial call to set offsets based on initial scroll position
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <section className="carousel-gallery-section" ref={sectionRef}>
+        <div className="carousel-gallery-container">
+            <ImageRow images={row1} offset={offsets[0]} />
+            <ImageRow images={row2} offset={offsets[1]} />
+            <ImageRow images={row3} offset={offsets[2]} />
+        </div>
+    </section>
+  );
+}

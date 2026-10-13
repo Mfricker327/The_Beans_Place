@@ -28,12 +28,12 @@
 // Import the hero image: import heroBeans from "../assets/hero-beans.png";
 // Import reusable UI components: Button and Badge
 
-/* --- YOUR IMPORTS GO HERE --- */
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import heroBeans from "../assets/hero-beans.png";
-import Button from "./ui/Button";
 import Badge from "./ui/Badge";
+import Button from "./ui/Button";
+
 
 // STEP 2: Animation Variants (outside the component)
 // Create two objects that define how text animates:
@@ -120,9 +120,9 @@ export default function HeroSection() {
           </Badge>
         </motion.div>
         <motion.h1
-          classname="h1-stack"
-          style={{ margin: 0, persepctive: "600px" }}
-          variant={textVariants}
+          className="h1-stack"
+          style={{ margin: 0, perspective: "600px" }}
+          variants={textVariants}
           initial="hidden"
           animate="visible"
         >
@@ -150,7 +150,7 @@ export default function HeroSection() {
         </motion.h1>
         <motion.p
             className="lead"
-            style={{ marginTop: "10" }}
+            style={{ marginTop: "10px" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -160,7 +160,7 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div
-            classname="hero-action"
+            className="hero-action"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
@@ -199,9 +199,9 @@ export default function HeroSection() {
         className="hero-art-container"
         >
         <motion.img 
-        classname="hero-art"
+        className="hero-art"
         src={heroBeans}
-        alt="Permium coffee beans"
+        alt="Premium coffee beans"
         style={{ scale: imgScale, opacity: imgOpacity, y: imgY }}
         initial={{ opacity: 0, scale: 0.8, x: 60 }}
         animate={{ opacity: 1, scale: 1.35, x: 0 }}
