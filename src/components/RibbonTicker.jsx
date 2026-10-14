@@ -24,8 +24,7 @@
 
 /* --- YOUR IMPORTS GO HERE --- */
 
-import { motion } from "framer-motion";
-import { div } from "framer-motion/client";
+import { motion as Motion } from "framer-motion";
 
 // STEP 2: Create and export the RibbonTicker component
 // export default function RibbonTicker() { ... }
@@ -84,14 +83,14 @@ return (
         <div className="ribbon-ticker">
             <div className="ribbon-track">
                 {items.map((name, i) => (
-                    <motion.span
+                    <Motion.span
                         key={i}
                         className="ribbon-item"
                         whileHover={{ scale: 1.1, color: "#f0b955" }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
                         {name} <span className="ribbon-dot">✦</span>
-                    </motion.span>
+                    </Motion.span>
                 )) }
                 </div>
                 </div>

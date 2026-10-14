@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { useInView, useSpring, useTransform, motion } from "framer-motion";
+import { useInView, useSpring, useTransform, motion as Motion } from "framer-motion";
 
 export default function AnimatedCounter({
   target,
@@ -23,5 +23,5 @@ export default function AnimatedCounter({
     springVal.set(target);
   }
 
-  return <motion.span ref={ref}>{display}</motion.span>;
+  return <Motion.span ref={ref}>{display}</Motion.span>;
 }

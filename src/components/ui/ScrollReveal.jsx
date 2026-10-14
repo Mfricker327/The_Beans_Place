@@ -1,3 +1,46 @@
+import { useRef } from "react";
+import { useInView, motion as Motion } from "framer-motion";
+
+const presets = {
+  fadeUp: {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0 },
+  },
+  fadeIn: {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  },
+};
+
+export default function ScrollReveal({
+  children,
+  animation = "fadeUp",
+  delay = 0,
+  duration = 0.6,
+  once = true,
+  amount = 0.15,
+  className,
+  ...props
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once, amount });
+  const preset = presets[animation] || presets.fadeUp;
+
+  return (
+    <Motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={preset}
+      transition={{ duration, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </Motion.div>
+  );
+}
+
 export function StaggerContainer({
 
   children,
@@ -20,7 +63,7 @@ export function StaggerContainer({
 
   return (
 
-    <motion.div
+    <Motion.div
 
       ref={ref}
 
@@ -44,7 +87,7 @@ export function StaggerContainer({
 
       {children}
 
-    </motion.div>
+    </Motion.div>
 
   );
 
@@ -68,7 +111,7 @@ export function StaggerItem({
 
   return (
 
-    <motion.div
+    <Motion.div
 
       variants={preset}
 
@@ -82,7 +125,7 @@ export function StaggerItem({
 
       {children}
 
-    </motion.div>
+    </Motion.div>
 
   );
 

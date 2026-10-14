@@ -28,8 +28,7 @@
 // Import the hero image: import heroBeans from "../assets/hero-beans.png";
 // Import reusable UI components: Button and Badge
 
-import { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform, motion as Motion } from "framer-motion";
 import heroBeans from "../assets/hero-beans.png";
 import Badge from "./ui/Badge";
 import Button from "./ui/Button";
@@ -110,7 +109,7 @@ export default function HeroSection() {
     <>
       {/* LEFT COLUMN */}
       <div className="hero-text-column" id="home">
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -118,37 +117,37 @@ export default function HeroSection() {
           <Badge variant="outline" className="mb-5">
             Premium coffee beans — roasted Fresh Daily
           </Badge>
-        </motion.div>
-        <motion.h1
+        </Motion.div>
+        <Motion.h1
           className="h1-stack"
           style={{ margin: 0, perspective: "600px" }}
           variants={textVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.span
+          <Motion.span
             variants={wordVariant}
             style={{ display: "inline-block" }}
           >
             YOUR PLACE
-          </motion.span>
+          </Motion.span>
           <br />
-          <motion.span
+          <Motion.span
             variants={wordVariant}
             className="muted"
             style={{ display: "inline-block" }}
           >
             FOR COFFEE
-          </motion.span>
+          </Motion.span>
           <br />
-          <motion.span
+          <Motion.span
             variants={wordVariant}
             style={{ display: "inline-block" }}
           >
             BREWING
-          </motion.span>
-        </motion.h1>
-        <motion.p
+          </Motion.span>
+        </Motion.h1>
+        <Motion.p
             className="lead"
             style={{ marginTop: "10px" }}
             initial={{ opacity: 0, y: 20 }}
@@ -157,9 +156,9 @@ export default function HeroSection() {
             >
                 Farm-to-cup single-origin beans form Ethiopia, Columbia & beyond. 
                 Freshly roasted in small batches and shipped to your door within 48 hours.
-            </motion.p>
+            </Motion.p>
 
-            <motion.div
+            <Motion.div
             className="hero-action"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -175,10 +174,10 @@ export default function HeroSection() {
                 >
                 SHOP COFFEE
                 </Button>
-            </motion.div>
+            </Motion.div>
 
             {/*Trust Indicators*/}
-            <motion.div
+            <Motion.div
             className="hero-trust"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1}}
@@ -190,7 +189,7 @@ export default function HeroSection() {
             >|</span>
             <span>Free shipping on orders over $50</span>
 
-            </motion.div>
+            </Motion.div>
             
       </div>
 
@@ -198,7 +197,7 @@ export default function HeroSection() {
       <div
         className="hero-art-container"
         >
-        <motion.img 
+        <Motion.img 
         className="hero-art"
         src={heroBeans}
         alt="Premium coffee beans"
@@ -209,7 +208,7 @@ export default function HeroSection() {
         />
 
         {/*Floating Price Badge*/}
-        <motion.div
+        <Motion.div
         className="hero-floating-badge"
         initial={{ opacity: 0, scale: 0.5}}
         animate={{ opacity: 1, scale: 1}}
@@ -224,7 +223,7 @@ export default function HeroSection() {
         <span
         className="hero-floating-badge-label"
         >per bag</span>
-        </motion.div>
+        </Motion.div>
         </div>
     </>
   );

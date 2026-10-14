@@ -30,7 +30,7 @@
 
 /* --- YOUR IMPORTS GO HERE --- */
  import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/Beans_logo.png";
 import Button from "./ui/Button";
 
@@ -100,7 +100,7 @@ export default function NavBar({ toggleCart, theme, onToggleTheme }) {
     }, []); // [] means this effect runs once on mount and cleans up on unmount
 
     return (
-        <motion.header
+        <Motion.header
             className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}
             initial={{ y:-80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -165,7 +165,7 @@ export default function NavBar({ toggleCart, theme, onToggleTheme }) {
             {/* Mobile Nav */}
             <AnimatePresence>
                 {menuOpen && (
-                    <motion.div
+                    <Motion.div
                     className="overflow-hidden md:hidden"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
@@ -212,9 +212,9 @@ export default function NavBar({ toggleCart, theme, onToggleTheme }) {
                             </Button>
 
                         </nav>
-                    </motion.div>
+                    </Motion.div>
                 )}
             </AnimatePresence>
-        </motion.header>
+        </Motion.header>
     );
 }
