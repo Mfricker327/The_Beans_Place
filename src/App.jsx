@@ -35,6 +35,10 @@ import HeroSection from "./components/HeroSection";
 import FeaturesSection from "./components/FeaturesSection";
 import RibbonTicker from "./components/RibbonTicker";
 import ProductShowcase from "./components/ProductShowcase";
+import CtaSection from "./components/CtaSection";
+
+
+
 
 import imgEthiopianHarra from "./assets/Ethiopian-Harrar-Bag.png";
 import imgColombianSupremo from "./assets/Colombian-Supremo-Bag.png";
@@ -184,6 +188,12 @@ export default function App() {
       {/* Product Showcase */}
       <section className="bg-cta">
         <ProductShowcase products={productCatalog} addToCart={addToCart} />
+      </section>
+
+      {/*CTA Section*/}
+      <section className="bg-cta">
+        <CtaSection />
+    
       </section>
 
       {/* Ribbon Ticker Section */}
