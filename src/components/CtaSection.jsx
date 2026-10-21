@@ -250,7 +250,7 @@ Origins
 <AnimatedCounter target={48} suffix="hr" />
 </span>
 
-<span clasName="cta-stat-label">
+<span className="cta-stat-label">
 Fresh Delivery
 </span>
 </div>

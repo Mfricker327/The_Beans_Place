@@ -36,7 +36,10 @@ import FeaturesSection from "./components/FeaturesSection";
 import RibbonTicker from "./components/RibbonTicker";
 import ProductShowcase from "./components/ProductShowcase";
 import CtaSection from "./components/CtaSection";
-
+import AboutSection from "./components/AboutSection";
+import ContactSection from "./components/ContactSection";
+import FooterSection from "./components/FooterSection";
+import ShoppingCart from "./components/ShoppingCart";
 
 
 
@@ -165,6 +168,16 @@ export default function App() {
 
   return (
     <div className="app">
+     {/*Shopping Cart */}
+     <ShoppingCart
+     isOpen={cartOpen}
+     onToggleCart={toggleCart}
+     items={cartItems}
+     updateQty={updateCartQty}
+     removeItem={removeFromCart}
+     />
+
+    {/*NavBar */}
       <NavBar
         toggleCart={toggleCart}
         cartCount={cartCount}
@@ -179,7 +192,7 @@ export default function App() {
           <HeroSection />
         </div>
       </section>
-
+    
       {/* Features Section */}
       <section className="features bg-features" id="shop">
         <FeaturesSection />
@@ -193,35 +206,28 @@ export default function App() {
       {/*CTA Section*/}
       <section className="bg-cta">
         <CtaSection />
-    
       </section>
+
+      {/*Contact*/}
+      <section className="bg-cta" id="contact">
+        <ContactSection />
+      </section>
+
+      {/*Footer*/}
+      <section className="bg-footer">
+        <FooterSection />
+      </section>
+
+      {/*About*/}
+      <section className="bg-cta" id="about">
+      <AboutSection />
+      </section>
+
+     
 
       {/* Ribbon Ticker Section */}
       <RibbonTicker />
 
-      <section className="bg-cta" id="about">
-        <div className="container" style={{ padding: "4rem 1.5rem" }}>
-          <h2 style={{ margin: 0, fontSize: "2.5rem" }}>
-            Fresh coffee, roasted with purpose.
-          </h2>
-          <p style={{ maxWidth: "48rem", margin: "1rem auto 0" }}>
-            We source premium beans from trusted growers and roast in small
-            batches to deliver vibrant flavor and a café-quality cup at home.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-footer" id="contact">
-        <div
-          className="container"
-          style={{ padding: "4rem 1.5rem", textAlign: "center" }}
-        >
-          <h3 style={{ margin: 0 }}>Contact the roastery</h3>
-          <p style={{ margin: "0.75rem 0 0" }}>
-            hello@beansplace.com · (303) 555-0147
-          </p>
-        </div>
-      </section>
     </div>
   );
 }
